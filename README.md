@@ -2,22 +2,19 @@
 a upgrade contract demo based on openzeppelin
 
 **初始部署**
-  *first:先部署逻辑合约*
-	  *logic address:*
-	  *0xd9145CCE52D386f254917e481eB44e9943F39138*
-  *second:再部署管理合约，用于升级逻辑合约*
-	  *Proxy admin address:*
-	  *0xd8b934580fcE35a11B58C6D73aDeE468a2833fa8*
-  *third:部署可升级代理合约，用于存储逻辑合约数据*
-	  *部署时，需要指定三个参数：*
+  **first:先部署逻辑合约**
+	  logic address: 0xd9145CCE52D386f254917e481eB44e9943F39138
+  **second:再部署管理合约，用于升级逻辑合约**
+	  Proxy admin address: 0xd8b934580fcE35a11B58C6D73aDeE468a2833fa8
+  **third:部署可升级代理合约，用于存储逻辑合约数据**
+	  部署时，需要指定三个参数：
 		1. logic address
 		2. Proxy admin address
 		3. data:逻辑合约的初始化方法encode:abi.encodeWithSignature("initialize()")
-	  *proxy address:*
-	  *0xf8e81D47203A594245E36C48e151709F0C19fBe8*
+	  proxy address: 0xf8e81D47203A594245E36C48e151709F0C19fBe8*
 
 **至此，初始部署完成**
-  *如何检查代理合约地址是否有效*
+  如何检查代理合约地址是否有效
     1. remix选中[逻辑合约]的代码，然后在[at address]填入代理合约地址，生成逻辑合约。本例中填入 0xf8e81D47203A594245E36C48e151709F0C19fBe8
     2. 根据生成的合约，进行合约方法的调用，本例中调用set方法；然后查看get方法是否成效。
     3. 然后可以查看部署的逻辑合约，查看一下get方法，是否能查到上一步的set（不会查到，因为数据存在了代理合约的内存空间）
